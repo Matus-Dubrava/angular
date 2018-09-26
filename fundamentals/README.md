@@ -3,6 +3,7 @@
 * [data binding](#data-binding)
 * [directives](#directives)
   * [ngIf](#ngIf)
+  * [ngIf with else ](#ngIf-with-else)
 
 # first component
 In our app folder, which was created for us using __ng new__ command, we can create a new component by adding a new folder to the *app* folder in *src* folder. Let's call this new folder *users*.
