@@ -1,5 +1,6 @@
 * [first component](#first-component)
 * [first component with angular cli](#first-component-with-angular-cli)
+* [data binding](#data-binding)
 
 # first component
 In our app folder, which was created for us using __ng new__ command, we can create a new component by adding a new folder to the *app* folder in *src* folder. Let's call this new folder *users*.
@@ -61,6 +62,111 @@ And now, we can open the *app.component.html* file and place there this custom h
 The code above showes us how we can define our components by hand, but there is an option in angular CLI which does that for us, creating the folder for our component, adding the *ts* file as well as the *html* file and some others which we may or may not use. It also registers this new component in the *app.component.ts* file so that we can start using this newly created component right away.
 
 The command is ```ng generate component name-of-the-component``` (or a short version of this command which is ```ng g c name-of-the-component```)
+
+# data binding
+
+Data binding is the how exchange data between the component and the template associated with it. There are multiple ways of how to achive this.
+
+* string interpolation
+* property binding 
+* event binding 
+* two-way binding
+
+## string interpolation
+
+This type of data binding is used to send data from inside of the component to the template. Inside of the component we 
+can define some varable or a method that outputs a string and then use this in the template using double curly brackets syntax ```{{ name-of-the-variable }}```. Note that 
+
+*in component file*
+```javascript
+export class MyComponent {
+    const name = "John"
+};
+```
+
+*in template*
+
+```html
+<p>name: {{ name }}</p>
+```
+
+## property binding
+
+Again, this type of data binding is used to send data from component to template and it is used when we need to set some atribute of html element dynamically based on the data defined in our component. For example, we can set *disabled* property of the button this way. To achive this we need to wrap the property name with brackets and assign the name of the variable or method to it, enclosed in double quotation marks.
+
+*in component file*
+```javascript
+export class MyComponent {
+    const buttonIsDisabled = true;
+};
+```
+
+*in template*
+
+```html
+<button [diabled]="buttonIsDisabled">Click me!</button>
+```
+
+## even binding 
+
+Unlike the previous two methods, this one is used to send data from template to component by using events. The syntax used here is similar to one used in case of property binding but we change the brackets for braces and wrap the name of the event , such as *click* or *input* or any other normal JavaScript event. 
+
+*in component file*
+```javascript
+export class MyComponent {
+    onButtonClicked() {
+        console.log('button has been clicked');
+    }
+};
+```
+
+*in template*
+
+```html
+<button (click)="onButtonClicked()">Click me!</button>
+```
+
+Right now, we are not passing any data back to the template though. For that we can specify what data we want to send back and prepend that name with dolar sign.
+
+*in component file*
+```javascript
+export class MyComponent {
+    onInputChange(event) {
+        console.log('value of the input field is: ' + event.target.value);
+    }
+};
+```
+
+*in template*
+
+```html
+<input type="text" (input)="onInputChange($event)" />
+```
+
+## two way data binding 
+
+We can also set up a two way data binding which is used to send data between component and template in both directions.
+Here, unlike in other cases, we need to import *FormModule* from *@angular/forms* inside of *app.module.ts* file and add it to the *imports* array.
+
+Syntax in this case is a combination of curly braces and brackets.
+
+*in component file*
+```javascript
+export class MyComponent {
+    name = "";
+};
+```
+
+*in template*
+
+```html
+<input [(ngModel)]="name" type="text" />
+<p>{{ name }}</p>
+```
+
+Now we have established the two way databinding between variable called *name* and the input field and if we type some text into that field, the name is immediatelly updated. But that is of course not all to it, if we change the value of that *name* variable in some other way, the value of our input field is updated as well.
+ 
+
 
 
 
