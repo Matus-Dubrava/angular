@@ -1,4 +1,5 @@
-* [first-component](#first-component)
+* [first component](#first-component)
+* [first component, with CLI](#first-component,-with-CLI)
 
 # first component
 In our app folder, which was created for us using __ng new__ command, we can create a new component by adding a new folder to the *app* folder in *src* folder. Let's call this new folder *users*.
@@ -53,7 +54,13 @@ import { UsersComponent } from './users/users.component';
 export class AppModule { }
 ```
 
-And now, we can open the *app.component.html* file and place there a this custom html tag ```<app-users></app-users>``` and if we start the application. We should see the html from inside of *users.component.html* template to be rendered in the browser.
+And now, we can open the *app.component.html* file and place there this custom html tag ```<app-users></app-users>``` and if we now start the application. We should see the html that we have defined inside of *users.component.html* template to be rendered in the browser.
+
+## first component, with CLI 
+
+The code above showes us how we can define our components by hand, but there is an option in angular CLI which does that for us, creating the folder for our component, adding the *ts* file as well as the *html* file and some others which we may or may not use. It also registers this new component in the *app.component.ts* file so that we can start using this newly created component right away.
+
+The command is ```ng generate component name-of-the-component``` (or a short version of this command which is ```ng g c name-of-the-component```)
 
 
 
