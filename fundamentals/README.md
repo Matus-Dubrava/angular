@@ -1,6 +1,7 @@
 * [first component](#first-component)
 * [first component with angular cli](#first-component-with-angular-cli)
 * [data binding](#data-binding)
+* [directives](#directives)
 
 # first component
 In our app folder, which was created for us using __ng new__ command, we can create a new component by adding a new folder to the *app* folder in *src* folder. Let's call this new folder *users*.
@@ -166,7 +167,27 @@ export class MyComponent {
 
 Now we have established the two way databinding between variable called *name* and the input field and if we type some text into that field, the name is immediatelly updated. But that is of course not all to it, if we change the value of that *name* variable in some other way, the value of our input field is updated as well.
  
+# directives
 
+## ngIf 
+If we want to render some piece of html conditionally in our template, we can use __ngIf__ directive.
+
+```javascript
+<p *ngIf="someCondition">This element is rendered only when 'someCondition' is true</p>
+```
+
+## ngIf with else 
+We might also want to provide an else statement for ngIf as some fallback if the condition is not met. 
+
+```javascript
+<p *ngIf="someCondition; someIndicator">if condition is true here</p>
+
+<ng-template #someIndicator>
+    <p>
+        if condition is false here
+    </p>
+</ng-template>
+```
 
 
 
