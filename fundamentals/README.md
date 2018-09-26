@@ -2,7 +2,7 @@
 * [first component with angular cli](#first-component-with-angular-cli)
 * [data binding](#data-binding)
 * [directives](#directives)
-  * [ngIf](##ngIf)
+* [ngIf](#ngIf)
   * [ngIf with else ](#ngIf-with-else)
 
 # first component
