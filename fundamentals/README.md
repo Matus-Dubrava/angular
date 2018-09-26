@@ -170,7 +170,8 @@ Now we have established the two way databinding between variable called *name* a
 # directives
 
 ## ngIf 
-If we want to render some piece of html conditionally in our template, we can use __ngIf__ directive.
+If we want to render some piece of html conditionally in our template, we can use __ngIf__ directive. We also need to 
+prepend the __ngIf__ with * which indicates that __ngIf__ is a structural directive and by that we mean that it changes the structure of the DOM.
 
 ```javascript
 <p *ngIf="someCondition">This element is rendered only when 'someCondition' is true</p>
@@ -189,5 +190,53 @@ We might also want to provide an else statement for ngIf as some fallback if the
 </ng-template>
 ```
 
+## ngStyle
+We can use __ngStyle__ directive to apply some styles to the element on which we use it. Unlike __ngIf__, this is not a structural component, on only modifies the element in a certain way but it is not directly responsible for changing the DOM, therefore we don't use star(\*) in front of it.  
 
+```javascript
+<p ngStyle="{ backgroundColor: 'red' }">
+```
+
+While the above example correctly sets the background color of paragraph to red, we might also want to apply some styles based on some condition, one set of styles if the condition is met and others if not. To achieve that, we need to wrap this __ngStyle__ directive with braces which means that we are using a property binding there.
+
+
+
+
+```html
+<p [ngStyle]="{ backgroundColor: getColor() }">some text here</p>
+```
+
+And then we can define a some method in our component that will return the value for the background color propery.
+
+```javascript
+getColor() {
+    return Math.random() > 0.5 ? 'red' : 'green';
+}
+```
+
+## ngClass 
+Serves a similar purpose as __ngStyle__ but here we are dynamically specifying if some css class should be applied or not based on some condition. And again, this is not a structural directive so there is no start in front of it.
+
+```html
+<p [ngClass]="{ myClass: Math.random > 0.5 }">some text here</p>
+```
+
+## ngFor
+This is a structural component that let's us loop through some array and output and html element in our template for each item it the array.
+
+```javascript
+items = ['apple', 'orange', 'banana'];
+```
+
+```html
+<p \*ngFor="let item of items">{{ item }}</p>
+```
+
+We can also extract index of that loop like this.
+
+```html
+<p \*ngFor="let item of items; let i = index">{{ i }}</p>
+```
+
+where ```= index``` is kind of a reserver word in this context.
 
