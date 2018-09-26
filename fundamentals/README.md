@@ -31,6 +31,7 @@ But for that to work, we first need to tell the *app* component about this *user
 
 We can do that inside of *app.component.ts* file where we first need to import our *users* component and then, in the *declarations* array inside of *ngModule* decorator which decorates the *AppModule* class, we need to include this imported class.
 
+*app.component.ts*
 ```javascript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
