@@ -171,7 +171,7 @@ Now we have established the two way databinding between variable called *name* a
  
 # directives
 
-## ngIf 
+## ngIf
 If we want to render some piece of html conditionally in our template, we can use __ngIf__ directive. We also need to 
 prepend the __ngIf__ with * which indicates that __ngIf__ is a structural directive and by that we mean that it changes the structure of the DOM.
 
