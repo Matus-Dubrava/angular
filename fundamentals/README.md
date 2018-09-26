@@ -148,7 +148,7 @@ export class MyComponent {
 We can also set up a two way data binding which is used to send data between component and template in both directions.
 Here, unlike in other cases, we need to import *FormModule* from *@angular/forms* inside of *app.module.ts* file and add it to the *imports* array.
 
-Syntax in this case is a combination of curly braces and brackets.
+Syntax in this case is a combination of braces and brackets.
 
 *in component file*
 ```javascript
